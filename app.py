@@ -34,9 +34,13 @@ def process_image(img):
     return imgCopy, nums
 
 
-model_path = "model.pt"
-model = YOLO(model_path)
+@st.cache_resource
+def load_model():
+    model = YOLO("model.pt")
+    return model
 
+
+model = load_model()
 with st.sidebar:
     st.title("YOLOv9 ile Kırık Tespiti")
     st.write("Röntgen Görüntülerinin Derin Öğrenme Algoritmalarıyla Sınıflandırılması")
