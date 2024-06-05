@@ -24,7 +24,7 @@ def process_image(img):
                 )
                 cv2.putText(
                     imgCopy,
-                    "KIRIK",
+                    "FRUCTURE",
                     (x1, y1 - 8),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     0.3,
@@ -42,8 +42,8 @@ def load_model():
 
 model = load_model()
 with st.sidebar:
-    st.title("YOLOv9 ile Kırık Tespiti")
-    st.write("Röntgen Görüntülerinin Derin Öğrenme Algoritmalarıyla Sınıflandırılması")
+    st.title("Bone Fructure Detection with YOLOv9")
+    st.write("Classification of X-Ray Images with Deep Learning Algorithms")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
@@ -53,7 +53,7 @@ if uploaded_file is not None:
 
     # Process the image
     processed_image, nums = process_image(image)
-
+    fructure_quantity = "fructure is" if nums == 1 else "fructures are"
     # Display the processed image
-    caption = f"Bulunan kırık sayısı: {nums}"
+    caption = f"{nums} {fructure_quantity} found in this X-Ray image."
     st.image(processed_image, caption=caption, width=640)  # , use_column_width=True)
