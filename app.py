@@ -46,6 +46,7 @@ with st.sidebar:
     st.write("Classification of X-Ray Images with Deep Learning Algorithms")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+    st.write("© Dinçer AYDİÇ")
 
 if uploaded_file is not None:
     # Convert the file to an OpenCV image
